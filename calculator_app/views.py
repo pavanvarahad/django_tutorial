@@ -13,3 +13,6 @@ def calculator_view(request):
     elif request.method == "GET":
         print("GET request received")
         return render(request, "sample.html")
+    
+def jinja_tutorial(request):
+    return render(request, "jinja.html", {"name":"Pavan", "age":17, "skills":["Python", "Django", "JavaScript"], "height":175})
