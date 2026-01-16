@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "calculator_app",
     "jinja_tutorial",
+    "todo"
 ]
 
 MIDDLEWARE = [
