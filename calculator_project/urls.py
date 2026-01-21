@@ -23,4 +23,5 @@ urlpatterns = [
     path("", include("calculator_app.calculator_app_urls")),
     path("", include("jinja_tutorial.jinja_urls")),
     path("todo/", include("todo.todo_urls")),
+    path("todo_second",include("todo_second.todo_second_urls"))
 ]

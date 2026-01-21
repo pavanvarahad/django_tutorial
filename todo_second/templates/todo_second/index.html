@@ -1,0 +1,12 @@
+<html>
+<h1>My Todo app</h1>
+
+<form action="add_new_todo" method="POST">
+    {% csrf_token %}
+    <label>Enter the task </label>
+    <input type="text" name="task">
+
+    <input type="submit" value="Add Task">
+</form>
+
+</html>
