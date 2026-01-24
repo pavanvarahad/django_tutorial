@@ -1,11 +1,13 @@
 <html>
 <h1>My Todo app</h1>
 
+<a href="{% url "show_task" %}">View all tasks</a>  <br><br><br>
+
 <form action="add_new_todo" method="POST">
     {% csrf_token %}
     <label>Enter the task </label>
-    <input type="text" name="task">
-
+    <input type="text" name="task" >
+    
     <input type="submit" value="Add Task">
 </form>
 
