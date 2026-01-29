@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-
+from .models import Todo
 # tasks =[
 #     {
     # "task_name":"Learn Django",
@@ -23,6 +23,7 @@ def add_task(request):
         "task_name": new_task,
         "completed": False
     }
+    Todo.objects.create(id=2,task_name=new_task,is_completed=False)
     all_tasks.append(task_dictionary)
     print("-"*80)
     print(all_tasks)
