@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     "calculator_app",
     "jinja_tutorial",
     "todo",
-    "todo_second"
+    "todo_second",
+    "diet_planner"
 ]
 
 MIDDLEWARE = [
