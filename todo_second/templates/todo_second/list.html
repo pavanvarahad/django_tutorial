@@ -9,14 +9,14 @@
     </thead>
 {% for task in all_tasks %}
     <tr>
-        <td>{{ forloop.counter }}</td>
+        <td>{{ forloop.counter}}</td>
         <td>{{task.task_name}}</td>
-        <td>{{task.completed}} </td>
+        <td>{{task.is_completed}} </td>
         <td>
-            {% if task.completed == False %}
-                <button><a href="{%url 'task_completed' task_sl_no=forloop.counter %}">Done</a></button>
+            {% if task.is_completed == False %}
+                <button><a href="{%url 'task_completed' task_sl_no=task.id %}">Done</a></button>
             {% endif %}
-            <button><a href="{%url 'delete_task' task_sl_no=forloop.counter %}">Delete</a></button>
+            <button><a href="{%url 'delete_task' task_sl_no=task.id %}">Delete</a></button>
         </td>
     </tr>
 {% endfor %}
