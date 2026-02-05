@@ -4,7 +4,7 @@ HTML (HyperText Markup Language) is the standard language used to create the str
 
 ---
 
-### What HTML Is and How the Browser Parses It
+### What HTML Is and How the Browser Parses HTML
 
 HTML acts as the skeleton of a website. It uses a system of "markup" to annotate text, images, and other media so the browser understands their purpose—whether something is a heading, a paragraph, or a link.
 
