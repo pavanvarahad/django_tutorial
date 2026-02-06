@@ -208,7 +208,7 @@ In web development, "semantics" refers to the meaning of the code. Using semanti
 
 ---
 
-### Headings (<h1>–<h6>)
+### Headings (`<h1>–<h6>`)
 
 Headings are used to define the hierarchy of your content. There are six levels, ranging from `<h1>` (the most important) to `<h6>` (the least important).
 
@@ -223,7 +223,7 @@ Headings are used to define the hierarchy of your content. There are six levels,
 <h2>Instructions</h2>
 ```
 
-### Paragraphs (<p>)
+### Paragraphs (`<p>`)
 
 The `<p>` element is used to define a block of text. Browsers automatically add some space (margin) before and after a paragraph to separate it from surrounding content.
 
@@ -232,7 +232,7 @@ The `<p>` element is used to define a block of text. Browsers automatically add 
 <p>This is a second paragraph, which will appear on a new line.</p>
 ```
 
-### Inline Text Semantics (<span>, <strong>, <em>, <b>, <i>)
+### Inline Text Semantics (`<span>, <strong>, <em>, <b>, <i>`)
 
 These elements are used to style or emphasize specific parts of a text without breaking the flow of a paragraph.
 
@@ -241,7 +241,7 @@ These elements are used to style or emphasize specific parts of a text without b
 *   **`<em>`:** Indicates emphasis (stress). Browsers typically render this in *italics*.
 *   **`<b>` & `<i>`:** These are "presentational" tags. `<b>` makes text bold and `<i>` makes it italic without adding semantic importance. In modern HTML, `<strong>` and `<em>` are preferred for better accessibility.
 
-### Quotes (<blockquote>, <q>)
+### Quotes (`<blockquote>, <q>`)
 
 HTML provides specific tags for distinguishing quoted material from original content.
 
@@ -258,7 +258,7 @@ HTML provides specific tags for distinguishing quoted material from original con
 </blockquote>
 ```
 
-### Code & Preformatted Text (<code>, <pre>, <kbd>, <samp>)
+### Code & Preformatted Text (`<code>, <pre>, <kbd>, <samp>`)
 
 When displaying computer code or technical input/output, these tags ensure the text is rendered clearly, usually in a monospaced (fixed-width) font.
 
@@ -296,7 +296,7 @@ These are void elements (they do not have a closing tag) used to control layout.
 <p>I recently read <cite>The Great Gatsby</cite> by F. Scott Fitzgerald.</p>
 ```
 
-### Marked & Deleted Text (<mark>, <del>, <ins>)
+### Marked & Deleted Text (`<mark>, <del>, <ins>`)
 
 These tags are used to show changes in a document or to highlight specific parts.
 
@@ -2028,7 +2028,7 @@ Different cultures format dates and numbers differently (e.g., MM/DD/YYYY in the
 - **Semantics** like the `<time>` element bridge the gap between human-readable text and machine-understandable data.
 
 
-# 23. Microdata & Structured Data
+## 23. Microdata & Structured Data
 
 While Semantic HTML tells the browser about the structure of a page, Microdata and Structured Data tell search engines exactly what the content *means*. By providing this data in a standardized format, you enable search engines to display your website with "Rich Results," which are enhanced listings that include extra information like ratings, prices, or event dates.
 
@@ -2080,7 +2080,7 @@ Common Rich Results include:
 
 ---
 
-# 24. HTML Emails (Bonus Skill)
+## 24. HTML Emails (Bonus Skill)
 
 Building HTML emails is significantly different from building modern websites. Because email clients (like Outlook, Gmail, and Apple Mail) use very old rendering engines, developers must use coding techniques from the late 1990s to ensure the email looks consistent for everyone.
 
