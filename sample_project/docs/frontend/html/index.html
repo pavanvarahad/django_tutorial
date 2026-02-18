@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <details>
+  <summary>What is the return policy?</summary>
+  <p>You can return any item within 30 days of purchase, no questions asked.</p>
+</details>
+
+
+<dialog id="favDialog">
+  <form method="dialog">
+    <p>Are you sure you want to delete this?</p>
+    <button value="cancel">Cancel</button>
+    <button value="confirm">Confirm</button>
+  </form>
+</dialog>
+
+<button id="updateDetails">Open Dialog</button>
+
+<script>
+  const dialog = document.getElementById('favDialog');
+  document.getElementById('updateDetails').addEventListener('click', () => {
+    dialog.showModal();
+  });
+</script>
+
+
+<!-- Inside a Custom Element's Shadow DOM -->
+<div class="user-profile">
+  <h1><slot name="user-name">Default Name</slot></h1>
+  <p><slot>Default Bio text goes here.</slot></p>
+</div>
+
+<!-- Usage in the main HTML -->
+<my-user-profile>
+  <span slot="user-name">Alice Smith</span>
+  <span>Alice is a senior developer based in London.</span>
+</my-user-profile>
+
+<user-profile-card username="jdoe123" job></user-profile-card>
+</body>
+</html>
