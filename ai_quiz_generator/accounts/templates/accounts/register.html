@@ -1,40 +1,55 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Page</title>
+    <link rel="stylesheet" href="{% static 'accounts/styles/style.css' %}">
 </head>
 <body>
+    <nav>
+        <header>
+            <img id="navigation_logo" src="{% static 'accounts/images/logo.png' %}" alt="Quizio Logo">
+        </header>
+
+        <div class="nav_links">
+            <a href="">Features</a>
+            <a href="">Pricing</a>
+            <a href="">About</a>
+            <a href="" id="nav_signin_btn">Sign In</a>
+        </div>
+        
+    </nav>
+
     <main>
         <h1>Register to Quizio</h1>
         <form action="">
-            <div>
+            <div class="input_feilds">
                 <label for="f_name">First Name</label>
                 <input type="text" name="f_name" id="f_name">
             </div>
 
-            <div>
+            <div class="input_feilds">
                 <label for="l_name">Last Name</label>
                 <input type="text" name="l_name" id="l_name">
             </div>
 
-            <div>
+            <div class="input_feilds">
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email">
             </div>
-
-            <div>
+            <div class="input_feilds">
                 <label for="password">Password</label>
                 <input type="password" name="password" id="password">
             </div>
 
-            <div>
+            <div class="input_feilds">
                 <label for="password">Renter your Password</label>
                 <input type="password" name="conf_password" id="conf_password">
             </div>
 
-            <div>
+            <div class="input_feilds">
                 <button type="submit">Register</button>
                 <a href="">Already have an account? Sign in</a>
             </div>
