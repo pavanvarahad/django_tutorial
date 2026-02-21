@@ -10,7 +10,7 @@
 <body>
     <nav>
         <header>
-            <img id="navigation_logo" src="{% static 'accounts/images/logo.png' %}" alt="Quizio Logo">
+            <img class="navigation_logo" src="{% static 'accounts/images/logo.png' %}" alt="Quizio Logo">
         </header>
 
         <div class="nav_links">
@@ -23,37 +23,45 @@
     </nav>
 
     <main>
-        <h1>Register to Quizio</h1>
-        <form action="">
-            <div class="input_feilds">
-                <label for="f_name">First Name</label>
-                <input type="text" name="f_name" id="f_name">
-            </div>
+        <div class="form_container">
+            <img src="{% static 'accounts/images/logo.png' %}" alt="" class="navigation_logo">
+            <h1>Create Your Quizio Account</h1>
+            <form action="">
+                <div class="input_feilds two_cols">
+                    <div>
+                        <label for="f_name">First Name</label>
+                        <input type="text" name="f_name" id="f_name" placeholder="eg. Jhon">
+                    </div>
+                    
+                    <div>
+                        <label for="l_name">Last Name</label>
+                        <input type="text" name="l_name" id="l_name">
+                    </div>
+                
+                </div>
 
-            <div class="input_feilds">
-                <label for="l_name">Last Name</label>
-                <input type="text" name="l_name" id="l_name">
-            </div>
+               
 
-            <div class="input_feilds">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email">
-            </div>
-            <div class="input_feilds">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password">
-            </div>
+                <div class="input_feilds">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email">
+                </div>
+                <div class="input_feilds">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password">
+                </div>
 
-            <div class="input_feilds">
-                <label for="password">Renter your Password</label>
-                <input type="password" name="conf_password" id="conf_password">
-            </div>
+                <div class="input_feilds">
+                    <label for="password">Renter your Password</label>
+                    <input type="password" name="conf_password" id="conf_password">
+                </div>
 
-            <div class="input_feilds">
-                <button type="submit">Register</button>
-                <a href="">Already have an account? Sign in</a>
-            </div>
-        </form>
+                <div class="input_feilds">
+                    <button type="submit">Register</button>
+                    <a href="">Already have an account? Sign in</a>
+                </div>
+            </form>
+        </div>
     </main>
 </body>
 </html>
