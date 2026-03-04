@@ -1,32 +1,18 @@
+{% extends "accounts/base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Page</title>
-    <link rel="stylesheet" href="{% static 'accounts/styles/style.css' %}">
-</head>
-<body>
-    <nav>
-        <header>
-            <img class="navigation_logo" src="{% static 'accounts/images/logo.png' %}" alt="Quizio Logo">
-        </header>
-
-        <div class="nav_links">
-            <a href="">Features</a>
-            <a href="">Pricing</a>
-            <a href="">About</a>
-            <a href="" id="nav_signin_btn">Sign In</a>
-        </div>
-        
-    </nav>
-
-    <main>
+{% block content %}
         <div class="form_container">
             <img src="{% static 'accounts/images/logo.png' %}" alt="" class="navigation_logo">
             <h1>Create Your Quizio Account</h1>
-            <form action="">
+            <form action="{% url 'register' %}" method="POST">
+                {% csrf_token %}
+
+                {% if error %}
+                        <p class="message error">{{ error }}</p>
+                {% endif %}
+                {% if success %}
+                        <p class="message success">{{ success }}</p>
+                {% endif %}
                 <div class="input_feilds two_cols">
                     <div>
                         <label for="f_name">First Name</label>
@@ -58,10 +44,8 @@
 
                 <div class="input_feilds">
                     <button type="submit">Register</button>
-                    <a href="">Already have an account? Sign in</a>
+                    <a href="{% url 'login_page' %}">Already have an account? Sign in</a>
                 </div>
             </form>
         </div>
-    </main>
-</body>
-</html>
+{% endblock %}

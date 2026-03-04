@@ -1,0 +1,32 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+{% block content %}
+        <div class="form_container">
+            <img src="{% static 'accounts/images/logo.png' %}" alt="" class="navigation_logo">
+            <h1>Login Your Quizio Account</h1>
+            <form action="{% url 'login' %}" method="POST">
+                {% csrf_token %}
+
+                {% if error %}
+                        <p class="message error">{{ error }}</p>
+                {% endif %}
+                {% if success %}
+                        <p class="message success">{{ success }}</p>
+                {% endif %}
+
+
+                <div class="input_feilds">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email">
+                </div>
+                <div class="input_feilds">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password">
+                </div>
+                <div class="input_feilds">
+                    <button type="submit">Login</button>
+                    <a href="{% url 'register_page' %}">Dont have an account? Sign up</a>
+                </div>
+            </form>
+        </div>
+{% endblock %}
