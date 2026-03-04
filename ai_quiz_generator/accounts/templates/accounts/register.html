@@ -26,7 +26,14 @@
         <div class="form_container">
             <img src="{% static 'accounts/images/logo.png' %}" alt="" class="navigation_logo">
             <h1>Create Your Quizio Account</h1>
-            <form action="">
+            <form action="{% url 'register' %}" method="POST">
+                {% csrf_token %}
+                {% if error %}
+                    <p class="message error">{{ error }}</p>
+                {% endif %}
+                  {% if success %}
+                    <p class="message success">{{ success }}</p>
+                {% endif %}
                 <div class="input_feilds two_cols">
                     <div>
                         <label for="f_name">First Name</label>
