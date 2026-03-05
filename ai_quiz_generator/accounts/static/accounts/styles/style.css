@@ -13,7 +13,7 @@ body{
 }
 
 main {
-   
+   min-height: 70vh;
 }
 
 .navigation_logo{
@@ -138,6 +138,11 @@ nav{
 
 .success{
     background-color: rgba(0, 128, 0, 0.26);
+}
+footer{
+    background-color: white;
+    padding: 20px;
+    text-align: center;
 }
 /* .input_feilds input[type="text"]{
 } */
