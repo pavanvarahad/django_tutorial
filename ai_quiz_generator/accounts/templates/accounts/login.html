@@ -8,7 +8,7 @@
 <div class="form_container">
     <img src="{% static 'accounts/images/logo.png' %}" alt="" class="navigation_logo">
     <h1>Login to Your Quizio Account</h1>
-    <form action="{% url 'register' %}" method="POST">
+    <form action="{% url 'handle_login' %}" method="POST">
         {% csrf_token %}
         {% if error %}
             <p class="message error">{{ error }}</p>

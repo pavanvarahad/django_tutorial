@@ -1,11 +1,24 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate,login as django_login
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
 def login(request):
     if request.method == "GET":
         return render(request,"accounts\\login.html")
+    if request.method == "POST":
+        email = request.POST.get("email")
+        password = request.POST.get("password")
+        login_result = authenticate(username = email, password = password)
+        if login_result:
+            django_login(request,user=login_result)
+            return redirect("dashboard")
+        else:
+            return render(request,"accounts\\login.html",{"error":"Invalid email or password"})
+        
+        
 def register(request):
     if request.method == "GET":
         return render(request,"accounts\\register.html")
@@ -31,8 +44,10 @@ def register(request):
                 return render(request,"accounts\\register.html",{'error':e})
         
         # return render(request,"accounts\\register.html")
-
-
+@login_required
+def dashboard(request):
+    
+    return render(request,"accounts\\dashboard.html")
 
 def validate_password(password,conf_password):
     if password != conf_password:
