@@ -1,11 +1,11 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate,login as django_login
+from django.contrib.auth import authenticate,login as django_login,logout
 from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
-def login(request):
+def handle_login(request):
     if request.method == "GET":
         return render(request,"accounts\\login.html")
     if request.method == "POST":
@@ -46,8 +46,11 @@ def register(request):
         # return render(request,"accounts\\register.html")
 @login_required
 def dashboard(request):
-    
     return render(request,"accounts\\dashboard.html")
+
+def handle_logout(request):
+    logout(request)
+    return redirect("handle_login")
 
 def validate_password(password,conf_password):
     if password != conf_password:
