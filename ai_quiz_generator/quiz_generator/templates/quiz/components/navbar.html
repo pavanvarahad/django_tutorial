@@ -1,0 +1,19 @@
+ {% load static %}
+ <nav>
+  <div class="nav_left_container">
+      <div class="logo_container">
+        <img id="logo" alt="Logo" src="{% static 'accounts/images/logo.png' %}">
+        <p class="logo_text">Quzio <br><span>AI Quiz Generator</span></p>
+    </div>
+        <a class="nav_button" href="{% url 'dashboard' %}">Home</a>
+        <a class="nav_button" href="{% url 'dashboard' %}">Create</a>
+  </div>
+
+   <div class="nav_right_container">
+    <form class="logout_form" action="{% url 'handle_logout' %}">
+        <button class="nav_button" type="submit">Logout</button>
+    </form>
+   </div>
+ </nav>   
+    
+    

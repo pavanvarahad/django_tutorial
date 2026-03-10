@@ -8,13 +8,12 @@
     <link rel="stylesheet" href="{% static 'quiz/styles/style.css' %}">
 </head>
 <body>
-    <form action="{% url 'handle_logout' %}">
-        <input type="submit" value="logout">
-    </form>
+    {% include "quiz/components/navbar.html" with logout_btn_name="Sign out" %}
     <main>
         {% block content %}
         
         {% endblock  %} 
     </main>
+
 </body>
 </html>
