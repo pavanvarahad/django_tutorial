@@ -44,9 +44,7 @@ def register(request):
                 return render(request,"accounts\\register.html",{'error':e})
         
         # return render(request,"accounts\\register.html")
-@login_required
-def dashboard(request):
-    return render(request,"accounts\\dashboard.html")
+
 
 def handle_logout(request):
     logout(request)
