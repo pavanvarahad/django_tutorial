@@ -1,0 +1,93 @@
+{% extends 'quiz/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="result_container">
+
+    <!-- Score Card -->
+    <div class="score_card">
+        <h1>{{ quiz_title }}</h1>
+        <p class="score_subtitle">Quiz Complete! Here's how you did.</p>
+
+        <div class="score_circle_wrapper">
+            <div class="score_circle {% if percentage >= 80 %}excellent{% elif percentage >= 60 %}good{% elif percentage >= 40 %}average{% else %}poor{% endif %}">
+                <span class="score_pct">{{ percentage }}%</span>
+                <span class="score_fraction">{{ score }}/{{ total }}</span>
+            </div>
+        </div>
+
+        <p class="score_message">
+            {% if percentage >= 80 %}
+                🏆 Excellent work! You've mastered this topic.
+            {% elif percentage >= 60 %}
+                👍 Good job! A little more practice and you'll nail it.
+            {% elif percentage >= 40 %}
+                📖 Keep going! Review the explanations below to improve.
+            {% else %}
+                💪 Don't give up! Study the material and try again.
+            {% endif %}
+        </p>
+
+        <div class="score_stats">
+            <div class="stat_box correct_stat">
+                <span class="stat_number">{{ score }}</span>
+                <span class="stat_label">Correct</span>
+            </div>
+            <div class="stat_box wrong_stat">
+                <span class="stat_number">{{ wrong }}</span>
+                <span class="stat_label">Wrong</span>
+            </div>
+            <div class="stat_box total_stat">
+                <span class="stat_number">{{ total }}</span>
+                <span class="stat_label">Total</span>
+            </div>
+        </div>
+
+        <a href="{% url 'create_quiz' %}" class="nav_button retry_btn">Create Another Quiz</a>
+    </div>
+
+    <!-- Detailed Review -->
+    <div class="review_section">
+        <h2 class="review_heading">📝 Detailed Review</h2>
+
+        {% for r in results %}
+        <div class="review_card {% if r.is_correct %}correct_card{% else %}wrong_card{% endif %}">
+            <div class="review_card_header">
+                <span class="review_q_num">Q{{ r.id }}</span>
+                <span class="review_status">
+                    {% if r.is_correct %}
+                        ✅ Correct
+                    {% else %}
+                        ❌ Incorrect
+                    {% endif %}
+                </span>
+            </div>
+
+            <p class="review_question">{{ r.question }}</p>
+
+            <div class="review_options">
+                {% for opt in r.options %}
+                <div class="review_option
+                    {% if opt == r.correct_answer %}correct_opt{% endif %}
+                    {% if opt == r.user_answer and not r.is_correct %}wrong_opt{% endif %}">
+                    {% if opt == r.correct_answer %}✔ {% elif opt == r.user_answer %}✘ {% endif %}{{ opt }}
+                </div>
+                {% endfor %}
+            </div>
+
+            {% if not r.user_answer %}
+            <p class="not_attempted">⚠️ Not attempted</p>
+            {% endif %}
+
+            <div class="review_explanation">
+                <span class="explanation_label">💡 Explanation:</span>
+                {{ r.explanation }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}

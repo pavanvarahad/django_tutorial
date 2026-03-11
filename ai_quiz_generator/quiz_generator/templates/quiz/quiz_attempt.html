@@ -1,0 +1,133 @@
+{% extends 'quiz/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="attempt_container">
+
+    <!-- Quiz Header -->
+    <div class="attempt_header">
+        <div class="attempt_header_left">
+            <h1>{{ quiz.quiz_title }}</h1>
+            <div class="attempt_meta">
+                <span class="meta_tag">📚 {{ quiz.metadata.subject }}</span>
+                <span class="meta_tag">🏷️ {{ quiz.metadata.topic }}</span>
+                <span class="meta_tag difficulty_tag {{ quiz.metadata.difficulty }}">{{ quiz.metadata.difficulty|capfirst }}</span>
+            </div>
+        </div>
+        <div class="attempt_header_right">
+            <div class="timer_box">
+                <span class="timer_label">⏱ Time Left</span>
+                <span id="timer" class="timer_value">{{ duration }}:00</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress_bar_wrapper">
+        <div class="progress_bar_fill" id="progress_fill" style="width: 0%"></div>
+    </div>
+    <div class="progress_text">
+        <span id="answered_count">0</span> of {{ quiz.questions|length }} answered
+    </div>
+
+    <!-- Quiz Form -->
+    <form action="{% url 'submit_quiz' %}" method="POST" id="quiz_form" data-total="{{ quiz.questions|length }}">
+        {% csrf_token %}
+        <!-- Hidden fields to carry data to the result view -->
+        <input type="hidden" name="quiz_title" value="{{ quiz.quiz_title }}">
+        <input type="hidden" name="duration" value="{{ duration }}">
+        <input type="hidden" name="questions_data" id="questions_data" value="{{ questions_json }}">
+
+        {% for q in quiz.questions %}
+        <div class="question_card" id="q_card_{{ q.id }}">
+            <div class="question_number">Question {{ q.id }}</div>
+            <p class="question_text">{{ q.question }}</p>
+            <div class="options_list">
+                {% for option in q.options %}
+                <label class="option_label" id="label_{{ q.id }}_{{ forloop.counter }}">
+                    <input type="radio" name="question_{{ q.id }}" value="{{ option }}"
+                        onchange="updateProgress()" class="option_radio">
+                    <span class="option_letter" data-idx="{{ forloop.counter0 }}"></span>
+                    <span class="option_text">{{ option }}</span>
+                </label>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- Submit Section -->
+        <div class="submit_section">
+            <p class="submit_note" id="submit_warning" style="display:none;">
+                ⚠️ You have <span id="unanswered_count"></span> unanswered question(s). You can still submit.
+            </p>
+            <button type="button" class="nav_button submit_btn" onclick="confirmSubmit()">
+                Submit Quiz
+            </button>
+        </div>
+    </form>
+</div>
+
+<script>
+    // ── Timer ──
+    const durationMinutes = parseInt("{{ duration }}") || 10;
+    let totalSeconds = durationMinutes * 60;
+    const timerEl = document.getElementById("timer");
+
+    function formatTime(s) {
+        const m = Math.floor(s / 60);
+        const sec = s % 60;
+        return `${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
+    }
+
+    const countdown = setInterval(() => {
+        totalSeconds--;
+        timerEl.textContent = formatTime(totalSeconds);
+        if (totalSeconds <= 60) timerEl.style.color = "#e74c3c";
+        if (totalSeconds <= 0) {
+            clearInterval(countdown);
+            document.getElementById("quiz_form").submit();
+        }
+    }, 1000);
+
+    timerEl.textContent = formatTime(totalSeconds);
+
+    // ── Progress ──
+    const totalQuestions = parseInt(document.getElementById('quiz_form').dataset.total);
+
+    function updateProgress() {
+        const answered = document.querySelectorAll('input[type="radio"]:checked').length;
+        document.getElementById("answered_count").textContent = answered;
+        const pct = (answered / totalQuestions) * 100;
+        document.getElementById("progress_fill").style.width = pct + "%";
+
+        // Highlight selected option
+        document.querySelectorAll('.option_label').forEach(label => {
+            label.classList.remove('selected');
+        });
+        document.querySelectorAll('input[type="radio"]:checked').forEach(radio => {
+            radio.closest('.option_label').classList.add('selected');
+        });
+    }
+
+    // ── Confirm Submit ──
+    function confirmSubmit() {
+        const answered = document.querySelectorAll('input[type="radio"]:checked').length;
+        const unanswered = totalQuestions - answered;
+        if (unanswered > 0) {
+            document.getElementById("unanswered_count").textContent = unanswered;
+            document.getElementById("submit_warning").style.display = "block";
+        }
+        // Small delay to show warning then submit
+        setTimeout(() => {
+            clearInterval(countdown);
+            document.getElementById("quiz_form").submit();
+        }, unanswered > 0 ? 2000 : 0);
+    }
+    // Set A/B/C/D letters on option badges
+    document.querySelectorAll('.option_letter[data-idx]').forEach(el => {
+        el.textContent = String.fromCharCode(65 + parseInt(el.dataset.idx));
+    });
+</script>
+
+{% endblock %}
