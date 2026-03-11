@@ -1,0 +1,99 @@
+{% extends 'quiz/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="create_quiz_container">
+    <h1>Create a New Quiz</h1>
+    <p class="subtitle">Fill in the details below and let AI generate your quiz instantly.</p>
+
+    <form action="{% url 'create_quiz' %}" method="POST" class="quiz_form">
+        {% csrf_token %}
+
+        {% if error %}
+        <p class="message error">{{ error }}</p>
+        {% endif %}
+        {% if success %}
+        <p class="message success">{{ success }}</p>
+        {% endif %}
+
+        <div class="input_feilds two_cols">
+            <div>
+                <label for="quiz_title">Quiz Title</label>
+                <input type="text" name="quiz_title" id="quiz_title" placeholder="e.g. Python Basics Quiz" required>
+            </div>
+            <div>
+                <label for="subject">Subject</label>
+                <input type="text" name="subject" id="subject" placeholder="e.g. Computer Science" required>
+            </div>
+        </div>
+
+        <div class="input_feilds two_cols">
+            <div>
+                <label for="topic">Topic</label>
+                <input type="text" name="topic" id="topic" placeholder="e.g. Functions and Loops" required>
+            </div>
+            <div>
+                <label for="difficulty">Difficulty</label>
+                <select name="difficulty" id="difficulty" required>
+                    <option value="" disabled selected>Select difficulty</option>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                    <option value="advanced">Advanced</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="input_feilds two_cols">
+            <div>
+                <label for="num_questions">No. of Questions</label>
+                <input type="number" name="num_questions" id="num_questions" placeholder="Between 5 and 20" min="5"
+                    max="20" required>
+            </div>
+            <div>
+                <label for="quiz_duration">Quiz Duration (in minutes) </label>
+                <input type="number" name="quiz_duration" id="quiz_duration" readonly>
+            </div>
+        </div>
+
+        <div class="input_feilds">
+            <label for="description">Description <span class="optional">(Optional)</span></label>
+            <textarea name="description" id="description" rows="4"
+                placeholder="Add a brief description of your quiz..."></textarea>
+        </div>
+
+        <div class="input_feilds">
+            <button type="submit" id="generate_btn" onclick="generate_btn_clicked()" class="nav_button">Generate
+                Quiz</button>
+        </div>
+
+    </form>
+</div>
+
+<script>
+
+    const difficulty = document.getElementById("difficulty");
+    const quiz_duration = document.getElementById("quiz_duration");
+    difficulty.addEventListener("change", function () {
+        var difficulty_value = difficulty.value;
+        var duration = 0
+        if (difficulty_value == "easy") {
+            duration = 10
+        }
+        else if (difficulty_value == "medium") {
+            duration = 20
+        }
+        else if (difficulty_value == "hard") {
+            duration = 30
+        }
+        else if (difficulty_value == "advanced") {
+            duration = 40
+        }
+        quiz_duration.value = duration;
+    });
+
+
+</script>
+
+{% endblock %}
