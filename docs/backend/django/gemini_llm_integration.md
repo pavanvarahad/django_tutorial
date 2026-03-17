@@ -77,20 +77,17 @@ For the most up-to-date information on rate limits, visit:
 | Model Name | Model ID | Category | RPM | TPM (Input) | RPD |
 |------------|----------|----------|-----|-------------|-----|
 | Gemini 2.5 Flash | `gemini-2.5-flash` | Text-out models | 5 | 250K | 20 |
-| Gemini 2.5 Flash Lite | `gemini-2.5-flash-lite` | Text-out models | 10 | 250K | 20 |
-| Gemini 3 Flash | `gemini-3-flash` | Text-out models | 5 | 250K | 20 |
-| Gemini 3.1 Flash Lite | `gemini-3.1-flash-lite` | Text-out models | 15 | 250K | 500 |
-| Gemini 2.5 Pro | `gemini-2.5-pro` | Text-out models | 0 | 0 | 0 |
-| Gemini 3.1 Pro | `gemini-3.1-pro` | Text-out models | 0 | 0 | 0 |
-| Gemma 3 1B | `gemma-3-1b` | Other models | 30 | 15K | 14.4K |
-| Gemma 3 4B | `gemma-3-4b` | Other models | 30 | 15K | 14.4K |
-| Gemma 3 12B | `gemma-3-12b` | Other models | 30 | 15K | 14.4K |
-| Gemma 3 27B | `gemma-3-27b` | Other models | 30 | 15K | 14.4K |
-| Gemini Embedding 1 | `embedding-001` | Other models | 100 | 30K | 1K |
-| Gemini Embedding 2 | `text-embedding-004` | Other models | 100 | 30K | 1K |
-| Gemini 2.5 Flash Native Audio Dialog | `gemini-2.5-flash-exp` | Live API | Unlimited | 1M | Unlimited |
-| Imagen 4 Generate | `imagen-3-generate-002` | Multi-modal | - | - | 25 |
-| Veo 3 Generate | `veo-3-generate` | Multi-modal | 0 | 0 | 0 |
+| Gemini 2.5 Flash-Lite | `gemini-2.5-flash-lite` | Text-out models | 10 | 250K | 20 |
+| Gemini 3 Flash Preview | `gemini-3-flash-preview` | Text-out models | 5 | 250K | 20 |
+| Gemini 3.1 Flash-Lite Preview | `gemini-3.1-flash-lite-preview` | Text-out models | 15 | 250K | 500 |
+| Gemini 2.5 Pro | `gemini-2.5-pro` | Text-out models | - | - | - |
+| Gemini 3.1 Pro Preview | `gemini-3.1-pro-preview` | Text-out models | - | - | - |
+| Gemini Embedding 001 | `gemini-embedding-001` | Embeddings | 100 | 30K | 1K |
+| Gemini Embedding 2 Preview | `gemini-embedding-2-preview` | Embeddings | 100 | 30K | 1K |
+| Gemini 2.5 Flash Live Preview | `gemini-2.5-flash-native-audio-preview-12-2025` | Live API | Unlimited | 1M | Unlimited |
+| Imagen 4 Generate | `imagen-4.0-generate-001` | Image Generation | - | - | 25 |
+| Veo 3.1 Generate Preview | `veo-3.1-generate-preview` | Video Generation | - | - | - |
+| Nano Banana (Image) | `gemini-2.5-flash-image` | Image Generation | - | - | - |
 
 **Legend:**
 - **RPM**: Requests per minute
