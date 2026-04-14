@@ -1,0 +1,84 @@
+body{
+height: 500vh;
+width: 100vw;
+}
+/* .box{
+    background-color: red;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    animation-name: move;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function:cubic-bezier(.51,-0.64,.29,.83);
+    animation-fill-mode: ; 
+} */
+
+.box{
+    background-color: red;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    left: 0;
+    transition-property: all;
+    transition-duration: 2s;
+    transition-timing-function: ease;
+    /* transform: skewX(20%); */
+}
+button{
+    background-color: rgb(247, 157, 157);
+    padding: 20px 40px;
+    border: none;
+    border-radius: 10px;
+    margin: 20px;
+    transition-property: all;
+    transition-duration: 500ms;
+    font-size: 20px;
+    /* transition-timing-function: ease; */
+}
+button:hover{
+    background-color: rgb(75, 6, 6);
+    color: white;
+    transform: rotate(20deg);
+}
+h1{
+    transition: all 2s ease-in-out;
+    transition-delay: 2s;
+}
+
+h1::after{
+    content: "";
+    color: blueviolet;
+    font-size: 50px;
+}
+body::-webkit-scrollbar{
+    background-color: brown;
+    width: 20px;
+}
+body::-webkit-scrollbar-thumb{
+    background-color: rgb(250, 222, 222);
+
+}
+/* h1::before{
+    content: " new text ";
+    color: blueviolet;
+} */
+
+.box:hover{
+    background-color: rgb(53, 69, 244);
+}
+
+/* @keyframes move {
+    from{
+        top: 0;
+        left: 0;
+    }
+    to{
+        top: 0;
+        left: 80%;
+        background-color: blue;
+        border-radius: 50%;
+        transform: rotate(360deg);
+    }
+} */
