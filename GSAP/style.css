@@ -1,0 +1,13 @@
+body{
+    background-color: #EAE6DD;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.box{
+    width: 100px;
+    height: 100px;
+    background-color: #F2545B;
+    margin: 50px auto;
+    border-radius: 10px;
+    opacity: 1;
+}
